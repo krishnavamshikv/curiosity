@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curious KV</title>
-  </head>
-  <body>
-    <h1>Hello , This is my portfolio for now. :)</h1>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curious KV</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+
+  <style>
+    .hero {
+      display: flex;
+      height: 90vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      text-shadow: 5px 2px 5px orange;
+      font-size: 50px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <h1 contenteditable>Hello , This is my portfolio for now. 🔥</h1>
+  </div>
+
+  <script>
+    const hero = document.querySelector('.hero')
+    const text = hero.querySelector('h1')
+    const walk = 40
+
+    function shadow(e) {
+      const { offsetWidth: width, offsetheight: height } = hero;
+      let { offsetX: x, offsetY: y } = e;
+
+      if (this != e.target) {
+        x = x + e.target.offsetLeft;
+        y = y + e.target.offsetTop;
+      }
+
+      const xWalk = Math.round((x / width * walk) - (walk / 2));
+      const yWalk = Math.round((y / width * walk) - (walk / 2));
+
+      text.style.textShadow = `${xWalk}px ${yWalk}px 5px orange`
+
+    }
+
+    hero.addEventListener('mousemove', shadow)
+  </script>
+
+</body>
+
 </html>
